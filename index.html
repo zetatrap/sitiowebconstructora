@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Navbar Multinivel Responsive</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      background: #272727;
+      color: rgb(255, 255, 255);
+      line-height: 1.6;
+    }
+
+    nav {
+  background: #272727;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  flex-wrap: wrap;
+}
+
+.logo a {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  z-index: 1001;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  z-index: 1000;
+}
+
+.menu li {
+  position: relative;
+}
+
+.menu a {
+  display: block;
+  padding: 0.7rem 1rem;
+  color: white;
+  text-decoration: none;
+  transition: background 0.3s;
+  white-space: nowrap;
+}
+
+.menu a:hover {
+  background: #333;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #222;
+  min-width: 200px;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease forwards;
+  border: 1px solid #333;
+}
+
+.submenu li {
+  position: relative;
+}
+
+.submenu .submenu {
+  top: 0;
+  left: 100%;
+  margin-left: 1px;
+}
+
+.show {
+  display: block !important;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.hamburger span {
+  height: 3px;
+  background: white;
+  margin: 4px 0;
+  width: 25px;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #111;
+    padding: 1rem 0;
+  }
+
+  .menu.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+    align-self: flex-end;
+    margin-top: -2rem;
+  }
+
+  .menu li {
+    width: 100%;
+  }
+
+  .menu a {
+    padding: 1rem;
+  }
+
+  /* CAMBIOS CLAVE ACÁ ABAJO */
+  .submenu {
+    position: static;
+    top: auto;
+    left: auto;
+    border: none;
+    background: #1b1b1b;
+    animation: none;
+    padding-left: 1rem;
+    width: 100%;
+  }
+
+  .submenu .submenu {
+    padding-left: 1.5rem;
+  }
+
+  .menu li > a::after {
+    content: "";
+    float: right;
+  }
+}
+
+    /* Sección portada */
+    .hero {
+      width: 100%;
+      height: 70vh;
+      background: url('https://via.placeholder.com/1920x800') no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      text-shadow: 2px 2px 10px #000;
+    }
+
+    .section {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    .section p {
+      text-align: center;
+      font-size: 1.2rem;
+    }
+
+    .info-block {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      margin: 2rem 0;
+      gap: 2rem;
+    }
+
+    .info-block:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .info-img {
+      flex: 1 1 45%;
+      max-width: 1000px;
+    }
+
+    .info-img img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .info-img img:hover {
+      transform: scale(1.05);
+    }
+
+    .info-text {
+  flex: 1 1 45%;
+  background: #ffffff00;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  font-size: 1.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: justify;
+  max-width: 500px;
+  line-height: 1.8;
+  word-break: break-word;
+  font-family: 'Poppins', sans-serif;
+}
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+        text-align: center;
+      }
+
+      .info-block {
+        flex-direction: column !important;
+        text-align: center;
+      }
+
+      .info-text {
+        font-size: 1rem;
+      }
+    }
+    .header {
+  width: 100%;
+  height: 50vh; /* Altura profesional, podés ajustar a 70vh o 80vh */
+  overflow: hidden;
+  position: relative;
+}
+
+.header-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Esto hace que se recorte bien y se vea profesional */
+}
+
+.popup-contacto {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  z-index: 9999;
+  width: 300px; /* ajustá según tu diseño */
+  height: auto;
+  animation: fadeInUp 1s ease;
+}
+
+.popup-contacto img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.6);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.popup-contacto img:hover {
+  transform: scale(1.05);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="navbar">
+    <div class="logo"><a href="#">LOGO</a></div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+    <ul class="menu" id="mainMenu">
+      <li><a href="#">INICIO</a></li>
+      <li>
+        <a href="#" onclick="toggleSubmenu(event)">EDIFICACIONES RESIDENCIALES▾</a>
+        <ul class="submenu">
+          <li>
+            <a href="#" onclick="toggleSubmenu(event)">Casas/Apartamentos ▸</a>
+            <ul class="submenu">
+              <li><a href="#">Terminado basico</a></li>
+              <li><a href="#">Terminado medio residencial</a></li>
+              <li><a href="#">Terminado residencial</a></li>
+              <li><a href="#">Terminado de lujo</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" onclick="toggleSubmenu(event)">Obras Comerciales▸</a>
+            <ul class="submenu">
+              <li><a href="#">Hoteles</a></li>
+              <li><a href="#">Tiendas Oficinas</a></li>
+              <li><a href="#">Restaurantes</a></li>
+              <li><a href="#">Mobiliarios</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#">CONTACTO</a></li>
+    </ul>
+  </div>
+</nav>
+<header class="header">
+  <img src="pexels-pixabay-534220.jpg" alt="Portada" class="header-image">
+</header>
+
+
+<section class="section">
+  <p> Nuestro compromiso es brindar soluciones innovadoras, sostenibles y de calidad.</p>
+
+  <div class="info-block">
+    <div class="info-img">
+      <img src="as.jpg" alt="Construcción">
+    </div>
+    <div class="info-text">
+      <p>Contamos con un equipo profesional que trabaja para llevar tus ideas a la realidad, combinando estética y funcionalidad.</p>
+    </div>
+  </div>
+
+  <div class="info-block">
+    <div class="info-img">
+      <img src="as.jpg" alt="Obra finalizada">
+    </div>
+    <div class="info-text">
+      <p>Más de 100 obras entregadas con éxito, cumpliendo plazos y garantizando satisfacción a nuestros clientes.</p>
+    </div>
+  </div>
+</section>
+<div class="popup-contacto">
+  <a href="contacto.html">
+    <img src="CLICKEA AQI.png" alt="Contacta Ya">
+  </a>
+</div>
+<script>
+  function toggleMenu() {
+    document.getElementById('mainMenu').classList.toggle('show');
+  }
+
+  function toggleSubmenu(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    const submenu = event.target.nextElementSibling;
+    if (submenu && submenu.classList.contains('submenu')) {
+      submenu.classList.toggle('show');
+    }
+  }
+
+  document.addEventListener('click', function (e) {
+    document.querySelectorAll('.submenu').forEach(menu => {
+      if (!menu.contains(e.target) && !e.target.matches('.submenu, .submenu *')) {
+        menu.classList.remove('show');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
+
